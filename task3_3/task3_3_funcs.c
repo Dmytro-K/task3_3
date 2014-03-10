@@ -6,15 +6,12 @@
 
 char* StrChr( const char* str, char c )
 {
-	if( str == NULL )
-	{
+	if( str == NULL ) {
 		return NULL;
 	}
 
-	while( *str )
-	{
-		if( *str == c )
-		{
+	while( *str ) {
+		if( *str == c ) {
 			return (char*)str;
 		}
 		str++;
@@ -25,49 +22,43 @@ char* StrChr( const char* str, char c )
 size_t StrLen( const char* str )
 {
 	size_t i;
-	if( str == NULL )
-	{
+	if( str == NULL ) {
 		return 0;
 	}
-	for( i=0; ; i++ )
-	{
-		if( *str == 0 )
-		{
-			break;
-		}
-		str++;
+	for( i = 0; *str != 0; i++, str++ ) {
+		; /* NULL */
 	}
 	return i;
 }
 
 bool IsGraph( char chr )
 {
-	return chr >= 0x21 && chr <= 0x7E;
+	return ( chr >= 0x21 ) && ( chr <= 0x7E );
 }
 
 bool IsDigit( char chr )
 {
-	return chr >= 0x30 && chr <= 0x39;
+	return ( chr >= 0x30 ) && ( chr <= 0x39 );
 }
 
 bool IsUpper( char chr )
 {
-	return chr >= 0x41 && chr <= 0x5A;
+	return ( chr >= 0x41 ) && ( chr <= 0x5A );
 }
 
 bool IsLower( char chr )
 {
-	return chr >= 0x61 && chr <= 0x7A;
+	return ( chr >= 0x61 ) && ( chr <= 0x7A );
 }
 
 bool IsAlpha( char chr )
 {
-	return IsUpper(chr) || IsLower(chr);
+	return IsUpper( chr ) || IsLower( chr );
 }
 
 bool IsAlnum( char chr )
 {
-	return IsDigit(chr) || IsAlpha(chr);
+	return IsDigit( chr ) || IsAlpha( chr );
 }
 
 char* FindWord( const char* str, char chr )
@@ -103,7 +94,7 @@ char* Input( void )
 	char *str=NULL;
 	size_t lastLen;
 
-	puts( "Enter some text:" );
+	puts( "Enter some text( enter empty line for end ):" );
 	
 	lastLen = 0;
 

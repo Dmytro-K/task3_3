@@ -8,18 +8,28 @@ int main( void )
 	char *text, *word, *ptr, *wordEnd;
 	size_t len;
 	char chr, tmpchr;
-
-	puts("Enter character:");
-	chr = (char)getchar();
-	if( IsGraph( tmpchr = (char)getchar() ) )
+	puts( "This program search character in a text and print all words, that contain given character." );
+	puts( "Enter character(a-z, A-Z, 0-9):" );
+	while( 1 )
 	{
-		ungetc( tmpchr, stdin );
+		chr = (char)getchar();
+		if( IsGraph( tmpchr = (char)getchar() ) ) {
+			ungetc( tmpchr, stdin );
+		}
+		if( IsAlnum( chr ) == false )
+		{
+			puts( "Wrong character, try again:" );
+		}
+		else
+		{
+			break;
+		}
 	}
 
 	text = Input();
 	if( text == NULL )
 	{
-		puts( "Something wrong" );
+		puts( "Not enough memory." );
 		return 1;
 	}
 
